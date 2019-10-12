@@ -47,9 +47,9 @@ public final class QueryUtils {
                 JSONObject properties = object.getJSONObject("properties");
                 String magnitude =  properties.getString("mag");
                 String location =  properties.getString("place");
-                String date =  properties.getString("time");
+                long time =  properties.getLong("time");
 
-                earthquakes.add(new Earthquake(magnitude, location, getData(date)));
+                earthquakes.add(new Earthquake(magnitude, location, time));
             }
 
         } catch (JSONException e) {
@@ -63,8 +63,4 @@ public final class QueryUtils {
         return earthquakes;
     }
 
-    private static String getData(String dataTimestamp){
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
-        return formatter.format(Long.parseLong(dataTimestamp));
-    }
 }

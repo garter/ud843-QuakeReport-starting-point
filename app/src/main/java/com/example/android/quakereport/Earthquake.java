@@ -11,11 +11,14 @@ public class Earthquake {
     //Data of the earthquake
     private String mData;
 
+    /** Time of the earthquake */
+    private long mTimeInMilliseconds;
 
-    public Earthquake(String magnitude, String location, String data){
+
+    public Earthquake(String magnitude, String location, long timeInMilliseconds){
         mMagnitude = magnitude;
         mLocation = location;
-        mData = data;
+        mTimeInMilliseconds = timeInMilliseconds;
     }
 
     public String getMagnitude() {
@@ -28,5 +31,9 @@ public class Earthquake {
 
     public String getData() {
         return mData;
+    }
+
+    public long getTimeInMilliseconds() {
+        return mTimeInMilliseconds;
     }
 }
