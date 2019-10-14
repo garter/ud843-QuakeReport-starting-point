@@ -12,13 +12,19 @@
         android:id="@+id/magnitude"
         android:layout_weight="1"
         tools:text="8.9"/>
-
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:id="@+id/location"
+        android:id="@+id/location_offset"
+        tools:text="15km of "/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/primary_location"
         tools:text="Can Francisco. CA"/>
+
 
     <TextView
         android:layout_width="0dp"

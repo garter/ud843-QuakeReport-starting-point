@@ -15,6 +15,8 @@ import java.util.List;
 
 public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
 
+    private static final String LOCATION_SEPARATOR = " of ";
+
     public EarthquakeAdapter(@NonNull Context context, List<Earthquake> earthquakes) {
         super(context, 0, earthquakes);
     }
@@ -32,8 +34,24 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         TextView magnitudeView = (TextView) listitemView.findViewById(R.id.magnitude);
         magnitudeView.setText(currentEarthquake.getMagnitude());
 
-        TextView locationView = (TextView) listitemView.findViewById(R.id.location);
-        locationView.setText(currentEarthquake.getLocation());
+        String originalLocation = currentEarthquake.getLocation();
+        String prymaryLocation;
+        String locationOffset;
+
+        if (originalLocation.contains(LOCATION_SEPARATOR)) {
+            String[] parts = originalLocation.split(LOCATION_SEPARATOR);
+            locationOffset = parts[0] + LOCATION_SEPARATOR;
+            prymaryLocation = parts[1];
+        }else{
+            locationOffset = getContext().getString(R.string.near_the);
+            prymaryLocation = originalLocation;
+        }
+
+        TextView location1 = (TextView) listitemView.findViewById(R.id.location_offset);
+        location1.setText(locationOffset);
+
+        TextView locationView = (TextView) listitemView.findViewById(R.id.primary_location);
+        locationView.setText(prymaryLocation);
 
         Date dateObject = new Date(currentEarthquake.getTimeInMilliseconds());
 
@@ -60,4 +78,5 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
         return timeFormat.format(date);
     }
+
 }

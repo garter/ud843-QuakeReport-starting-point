@@ -8,9 +8,6 @@ public class Earthquake {
     //Location of the earthquake
     private String mLocation;
 
-    //Data of the earthquake
-    private String mData;
-
     /** Time of the earthquake */
     private long mTimeInMilliseconds;
 
@@ -27,10 +24,6 @@ public class Earthquake {
 
     public String getLocation() {
         return mLocation;
-    }
-
-    public String getData() {
-        return mData;
     }
 
     public long getTimeInMilliseconds() {
