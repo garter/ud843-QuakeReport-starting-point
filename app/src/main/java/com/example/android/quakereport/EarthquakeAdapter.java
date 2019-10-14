@@ -1,8 +1,10 @@
 package com.example.android.quakereport;
 
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +35,9 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
         Earthquake currentEarthquake = getItem(position);
 
         TextView magnitudeView = (TextView) listitemView.findViewById(R.id.magnitude);
+        GradientDrawable magnitudeCircle = (GradientDrawable) magnitudeView.getBackground();
+        int magnitudeColor = getMagnitudeColor(currentEarthquake.getMagnitude());
+        magnitudeCircle.setColor(magnitudeColor);
         magnitudeView.setText(formatMagnitude(currentEarthquake.getMagnitude()));
 
         String originalLocation = currentEarthquake.getLocation();
@@ -83,5 +88,45 @@ public class EarthquakeAdapter extends ArrayAdapter<Earthquake> {
     private String formatMagnitude(double magnitude) {
         DecimalFormat magnitudeFormat = new DecimalFormat("0.0");
         return magnitudeFormat.format(magnitude);
+    }
+
+    private int getMagnitudeColor(double magnitude){
+        int magColorRId;
+        int magnitudeFloor = (int) Math.floor(magnitude);
+        switch (magnitudeFloor){
+            case 0:
+            case 1:
+                magColorRId = R.color.magnitude1;
+                break;
+            case 2:
+                magColorRId = R.color.magnitude2;
+                break;
+            case 3:
+                magColorRId = R.color.magnitude3;
+                break;
+            case 4:
+                magColorRId = R.color.magnitude4;
+                break;
+            case 5:
+                magColorRId = R.color.magnitude5;
+                break;
+            case 6:
+                magColorRId = R.color.magnitude6;
+                break;
+            case 7:
+                magColorRId = R.color.magnitude7;
+                break;
+            case 8:
+                magColorRId = R.color.magnitude8;
+                break;
+            case 9:
+                magColorRId= R.color.magnitude9;
+                break;
+            default:
+                magColorRId = R.color.magnitude10plus;
+                break;
+        }
+
+        return ContextCompat.getColor(getContext(), magColorRId);
     }
 }

@@ -7,17 +7,22 @@
     android:padding="16dp">
 
     <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:id="@+id/magnitude"
-        android:layout_weight="1"
-        tools:text="8.9"/>
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/magnitude_circle"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        tools:text="8.9" />
+
     <TextView
+        android:id="@+id/location_offset"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
         android:layout_weight="1"
-        android:id="@+id/location_offset"
-        tools:text="15km of "/>
+        tools:text="15km of " />
     <TextView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
