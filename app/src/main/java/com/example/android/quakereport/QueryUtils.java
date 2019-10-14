@@ -39,7 +39,7 @@ public final class QueryUtils {
             for (int i = 0; i < features.length(); i++){
                 JSONObject object = features.getJSONObject(i);
                 JSONObject properties = object.getJSONObject("properties");
-                String magnitude =  properties.getString("mag");
+                double magnitude =  properties.getDouble("mag");
                 String location =  properties.getString("place");
                 long time =  properties.getLong("time");
 
